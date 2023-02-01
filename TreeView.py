@@ -13,6 +13,11 @@ db = mysql.connector.connect(
 mycursor = db.cursor(buffered=True)
 
 def tree_window(column_name, number_of_columns, table_name):
+    print(column_name)
+    print('------------------------------')
+    print(number_of_columns)
+    print('------------------------------')
+    print(table_name)
     window = tk.Tk()
     window.geometry('1200x1000')
     window.title('Data')

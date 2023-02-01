@@ -3,7 +3,8 @@ import mysql.connector
 import tkinter as tk
 from tkinter import ttk
 import re
-from TreeView import tree_window
+# from TreeView import tree_window
+from table_view import create_table
 
 db = mysql.connector.connect(
     host='localhost',
@@ -32,6 +33,7 @@ db_name = 'earthquake_analysis'
 def check_rows(table):
     mycursor.execute(f'SELECT * from {table}')
     return mycursor.rowcount
+
 
 def table_exists():
     try:
@@ -91,6 +93,6 @@ def get_headers(table):
     for column_name in mycursor:
         headers.append(column_name[0])
 
-
-get_headers(f'{tables[1]}')
-tree_window(headers, len(headers), tables[1])
+get_headers(f'{tables[0]}')
+# tree_window(headers, len(headers), tables[0])
+create_table(headers, check_rows(tables[0]), tables[0])
